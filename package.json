@@ -1,11 +1,11 @@
 {
   "name": "forecast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "build/server.js",
   "scripts": {
     "start": "node build/server.js",
-    "dev": "NODE_ENV=development PORT=8000 REDIS_STORE_URI=redis://localhost:6379 REDIS_STORE_SECRET=secret TZ='America/Chicago' nodemon build/server.js",
+    "dev": "NODE_ENV=development PORT=8001 REDIS_STORE_URI=redis://localhost:6379 REDIS_STORE_SECRET=secret TZ='America/Chicago' nodemon build/server.js",
     "test": "PORT=8001 REDIS_STORE_URI=redis://localhost:6379 REDIS_STORE_SECRET=secret TZ='America/Chicago' NODE_ENV=test mocha build/test -t 10000",
     "build": "babel -d build src",
     "watch": "babel --watch -d build src | ts '[%Y-%m-%d %H:%M:%S]'"
@@ -24,7 +24,7 @@
     "backbone.marionette": "^3.3.0",
     "backbone_app": "^0.0.3",
     "backbone_modal_view": "^0.0.2",
-    "backbone_table_view": "^0.0.4",
+    "backbone_table_view": "^0.0.5",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.1",
     "bootstrap": "^3.3.7",

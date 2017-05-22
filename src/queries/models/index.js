@@ -9,6 +9,13 @@ export default function getAllRoutes (options) {
   queries.getCurrentWeatherData = async (req, res, next) => {
     const city = await getCity(req.params.city_name, config)
 
+    request(url.resolve('http://api.openweathermap.org/data/2.5/', 'weather?id=' + city.id + '&APPID=8e8e74551334e207d61aeca980950b06&units=imperial'))
+      .pipe(res)
+  }
+
+  queries.getForecast = async (req, res, next) => {
+    const city = await getCity(req.params.city_name, config)
+
     request(url.resolve('http://api.openweathermap.org/data/2.5/', 'forecast?id=' + city.id + '&APPID=8e8e74551334e207d61aeca980950b06&units=imperial'))
       .pipe(res)
   }
