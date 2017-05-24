@@ -1,7 +1,7 @@
 import Marionette from 'marionette'
-// import TableView from 'backbone_table_view'
+import ForecastCollection from './collections/ForecastCollection'
 import WeatherCollection from './collections/WeatherCollection'
-import WeatherView from './views/WeatherCollectionView.js'
+import WeatherView from './views/WeatherView'
 import config from './_config'
 
 const Controller = Marionette.Object.extend({
@@ -14,14 +14,11 @@ const Controller = Marionette.Object.extend({
   },
 
   getWeather: function (city) {
-    const app = this.app
     const weatherData = new WeatherCollection([], { city: city, config: config })
+    const forecastData = new ForecastCollection([], { city: city, config: config })
+    const weatherView = new WeatherView({ city: city, config: config, weather: weatherData, forecast: forecastData })
 
-    weatherData.fetch({
-      success: function (data) {
-        app.view.showChildView('main', new WeatherView({ collection: data }))
-      }
-    })
+    this.app.view.showChildView('main', weatherView)
   }
 })
 
